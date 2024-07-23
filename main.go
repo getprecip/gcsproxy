@@ -149,6 +149,10 @@ func proxy(w http.ResponseWriter, r *http.Request) {
 		handleError(w, err)
 		return
 	}
+
+	// enable CORS
+	setStrHeader(w, "Access-Control-Allow-Origin", "*")
+	
 	setTimeHeader(w, "Last-Modified", attrs.Updated)
 	setStrHeader(w, "Content-Type", attrs.ContentType)
 	setStrHeader(w, "Content-Language", attrs.ContentLanguage)
